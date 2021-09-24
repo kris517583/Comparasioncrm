@@ -1,0 +1,603 @@
+.paynow .btn{
+
+    background-color: #00887a;
+
+    color: #fff !important;
+
+}
+
+.paynow .btn:hover{
+
+    background-color: #00887a;
+
+    color: #fff;
+
+}
+
+
+
+.paynow .btn{
+
+    background-color: #00887a;
+    font-size: 16px;
+    font-family: catamaran;
+    border-radius: 50px;
+    color: #fff !important;
+
+}
+
+.paynow .btn:hover{
+
+    background-color: #00887a;
+
+    color: #fff;
+
+}
+
+
+
+a:hover{
+
+
+
+    text-decoration: none;
+
+    outline: 0;
+
+    color: #23527c;
+
+}
+
+
+
+a:focus{
+
+  text-decoration: none;
+
+  outline: 0;
+
+}
+
+
+
+
+
+#heading .s  {
+
+    box-shadow: 4px 5px 12px 1px #c3c3c3;
+
+    margin-bottom: 31px;
+
+    /* margin-top: 71px; */
+
+    background: #FFF;
+
+}
+
+
+
+#quotes .a{
+
+    box-shadow: 4px 5px 12px 1px #c3c3c3;
+
+    margin-bottom: 31px;
+
+    /* margin-top: 71px; */
+
+    background: #FFF;
+
+}
+
+
+
+
+
+  #compare{
+
+        padding-top: 104px;
+
+    background-color: #FBFBFB;
+
+
+
+  }
+
+
+
+  #story{
+
+    background-color: #FBFBFB;
+
+  }
+
+
+
+  #compare1{
+
+     background-color: #FBFBFB;
+
+  }
+
+
+
+  #comparebody h2{
+
+    font-family: "Catamaran",sans-serif;
+    font-size: 26px;
+
+    letter-spacing: 1.5px;
+
+    font-weight: 500;
+
+    color: #505050;
+
+  }
+
+
+
+  #comparebody h3{
+
+    font-family: "Catamaran",sans-serif;
+
+    font-size: 22px;
+
+    letter-spacing: 1px;
+
+    font-weight: 400;
+
+    color: #505050;
+
+  }
+
+
+
+  #comparebody h4{
+
+    font-family: "Catamaran",sans-serif;
+
+    font-size: 20px;
+
+    letter-spacing: 1px;
+
+    font-weight: 400;
+
+    color: #505050;
+
+  }
+
+
+
+ 
+
+    
+
+
+
+    #compare .bu{
+
+      margin-top: 42px;
+
+      margin-bottom: -8px;
+
+    }
+
+
+
+
+
+#heading .centertable{
+
+  text-align: center;
+
+}
+
+
+
+
+
+
+
+.nounderline{
+
+    text-decoration: none !important;
+
+}
+
+
+
+
+
+#quote-carousel {
+
+    padding: 0 10px 30px 10px;
+
+    margin-top: 60px;
+
+}
+
+#quote-carousel .carousel-control {
+
+    background: none;
+
+    color: #CACACA;
+
+    font-size: 2.3em;
+
+    text-shadow: none;
+
+    margin-top: 20px;
+
+}
+
+#quote-carousel .carousel-indicators {
+
+    position: relative;
+
+    right: 50%;
+
+    top: auto;
+
+    bottom: 0px;
+
+    margin-top: 20px;
+
+    margin-right: -19px;
+
+}
+
+#quote-carousel .carousel-indicators li {
+
+    width: 50px;
+
+    height: 50px;
+
+    cursor: pointer;
+
+    border: 1px solid #ccc;
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+    border-radius: 50%;
+
+    opacity: 0.4;
+
+    overflow: hidden;
+
+    transition: all .4s ease-in;
+
+    vertical-align: middle;
+
+}
+
+#quote-carousel .carousel-indicators .active {
+
+    width: 128px;
+
+    height: 128px;
+
+    opacity: 1;
+
+    transition: all .2s;
+
+}
+
+.item blockquote {
+
+    border-left: none;
+
+    margin: 0;
+
+}
+
+.item blockquote p:before {
+
+    content: "\f10d";
+
+    font-family: 'Fontawesome';
+
+    float: left;
+
+    margin-right: 10px;
+
+}
+
+
+
+.headingtable{
+
+  color: #505050;
+
+}
+
+
+
+@media (max-width:767px){
+
+    
+
+    #quote-carousel .carousel-control {
+
+    background: none;
+
+    color: #CACACA;
+
+    font-size: 1.3em;
+
+    text-shadow: none;
+
+    margin-top: 65px;
+
+}
+
+
+
+    #compare .bu{
+
+      margin-top: 20px;
+
+      margin-bottom: -8px;
+
+    }
+
+
+
+
+
+
+
+  #heading h3{
+
+    font-size: 19px;
+
+    line-height: 1.5;
+
+
+
+  }
+
+
+
+  #compare h2{
+
+    padding-left: 3px;
+
+    padding-right: 3px;
+
+    line-height: 1.5;
+
+    font-size: 21px;
+
+    padding-top: 20px !important;
+
+  }
+
+  #story h3{
+
+    margin-left: 9px;
+
+    margin-right: 9px;
+
+    line-height: 1.5;
+
+    font-size: 19px;
+
+  }
+
+
+
+  #compare h3{
+
+    line-height: 1.5;
+
+    font-size: 19px;
+
+
+
+  }
+
+
+
+  #compare1 h2{
+
+    line-height: 1.5; 
+
+    margin-left: 9px;
+
+    margin-right: 9px;
+
+    font-size: 21px;
+
+
+
+  }
+
+
+
+  #compare1 h4{
+
+    line-height: 1.5;
+
+    font-size: 16px;
+
+  }
+
+  #heading h2{
+
+    line-height: 1.5;
+
+    padding-left: 3px;
+
+    padding-right: 3px;
+
+    line-height: 1.5;
+
+    font-size: 21px;
+
+  }
+
+
+
+  p{
+
+    padding-left: 25px;
+
+    padding-right: 25px;
+
+    text-align: left;
+
+  }
+
+}
+
+
+
+@media(min-width: 768px) and (max-width: 1100px){
+
+    
+
+    #quote-carousel .carousel-control {
+
+    background: none;
+
+    color: #CACACA;
+
+    font-size: 1.3em;
+
+    text-shadow: none;
+
+    margin-top: 65px;
+
+}
+
+
+
+    #compare .bu{
+
+      margin-top: 20px;
+
+      margin-bottom: -8px;
+
+    }
+
+
+
+
+
+
+
+  #heading h3{
+
+    font-size: 19px;
+
+    line-height: 1.5;
+
+
+
+  }
+
+
+
+  #compare h2{
+
+    padding-left: 3px;
+
+    padding-right: 3px;
+
+    line-height: 1.5;
+
+    font-size: 21px;
+
+    padding-top: 20px !important;
+
+  }
+
+  #story h3{
+
+    margin-left: 9px;
+
+    margin-right: 9px;
+
+    line-height: 1.5;
+
+    font-size: 19px;
+
+  }
+
+
+
+  #compare h3{
+
+    line-height: 1.5;
+
+    font-size: 19px;
+
+
+
+  }
+
+
+
+  #compare1 h2{
+
+    line-height: 1.5; 
+
+    margin-left: 9px;
+
+    margin-right: 9px;
+
+    font-size: 21px;
+
+
+
+  }
+
+
+
+  #compare1 h4{
+
+    line-height: 1.5;
+
+    font-size: 16px;
+
+  }
+
+  #heading h2{
+
+    line-height: 1.5;
+
+    padding-left: 3px;
+
+    padding-right: 3px;
+
+    line-height: 1.5;
+
+    font-size: 21px;
+
+  }
+
+
+
+  p{
+
+    padding-left: 25px;
+
+    padding-right: 25px;
+
+    text-align: left;
+
+  }
+
+
+
+  #compare {
+
+    padding-top: 140px;
+
+}
+
+
+
+}
+
+
+
