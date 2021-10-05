@@ -486,12 +486,12 @@ gtag('config', 'UA-109296886-1');
   
   <h2 style="margin-bottom: 40px;"> <a href="https://www.helloleads.io/#pricing" target="_blank" style="color: #00887a"> HelloLeads CRM </a> vs<a href="http://www.zoho.com/crm/" target="_blank" style="color: #00887a"> Zoho CRM</a> </h2>
 
-  <div  class="header-tab tab row text-center" style="position: sticky;z-index:999;background:#202f3c">
+  <div  class="header-tab tab row text-center" onload="setheaderssticky()" style="position: sticky;z-index:999;background:#202f3c">
   	<div class="tab-title col-md-6 col-sm-6 col-xs-6 col-lg-6 text-center">
-  		<h2>HelloLeads CRM</h2>
+  		<h2>HelloLeads <span class="crmdown">CRM</span></h2>
   	</div>
   	<div class="tab-title col-md-6 col-sm-6 col-xs-6 col-lg-6 text-center" style="background: #202f3c">
-  		<h2>Zoho CRM</h2>
+  		<h2>Zoho <span class="crmdown">CRM</span></h2>
   	</div>
   </div>
   <div class="tab row text-center">
@@ -638,12 +638,22 @@ Use HelloLeads CRM. Sell smarter, faster & better.</p><br><br>
       </div>
 	<div  class="header-tab tab row text-center" onload="setheaderssticky()" style="position: sticky;z-index:999;background:#202f3c">
 		<div class="tab-title col-md-6 col-sm-6 col-xs-6 col-lg-6 text-center">
-			<h2>HelloLeads CRM</h2>
+			<h2>HelloLeads <span class="crmdown">CRM</span></h2>
 		</div>
 		<div class="tab-title col-md-6 col-sm-6 col-xs-6 col-lg-6 text-center" style="background: #202f3c">
-			<h2>Zoho CRM</h2>
+			<h2>Zoho <span class="crmdown">CRM</span></h2>
 		</div>
   	</div>
+  	<style type="text/css">
+  		@media(max-width: 410px)
+  		{
+  			.crmdown
+  			{
+  				width: 100%;
+  				display: block;
+  			}
+  		}
+  	</style>
   	<div class="tab row text-center">
   	<div class="table-title text-center"><h3>Entry Level Price</h3></div></div>
   	<div class="tab-comp row" style="width:90%; margin: auto;margin-bottom:20px;">
