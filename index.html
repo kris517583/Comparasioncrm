@@ -44,19 +44,207 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'UA-109296886-1');
 </script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <!-- ===============Google Analytics END=============== -->
 </head>
 
 
 
-<body id="comparebody" style="background-color: #FBFBFB" >
+<body id="comparebody" style="background-color: #FBFBFB;position:relative;" >
 
 
 
+<div id="infoi">
+    <!--<img class = "mainimg" src="https://appharbor.com/assets/images/stackoverflow-logo.png" height="20" width="32" />-->
+    <div id="chart"></div>
+    <img class = "closepng" src="./HL_files/cancel.png" onclick="closediv()">
+    <input type="email" placeholder="Enter your Email address"/>
+    <button id="spinwheel" onclick="clickspin()">Spin now</button>
+</div>
+<script type="text/javascript">
+  function closediv()
+  {
+    document.getElementById("infoi").style.display="none";
+  }
+  var maxw = 500 > document.getElementsByTagName("html")[0].offsetWidth ? document.getElementsByTagName("html")[0].offsetWidth : 500;
+  var padding = {top:20, right:40, bottom:0, left:0},
+            w = maxw - padding.left - padding.right,
+            h = maxw - padding.top  - padding.bottom,
+            r = Math.min(w, h)/2,
+            rotation = 0,
+            oldrotation = 0,
+            picked = 100000,
+            oldpick = [],
+            color = d3.scale.category20();
+var data = [
+                    {"label":"10% Discount",  "value":1,  "question":"What CSS property is used for specifying the area between the content and its border?"},
+                    {"label":"15% Discount",  "value":1,  "question":"What CSS property is used for changing the font?"},
+                    {"label":"5% Discount",  "value":1,  "question":"What CSS property is used for changing the color of text?"},
+                    {"label":"20% Discount",  "value":1,  "question":"What CSS property is used for changing the boldness of text?"},
+                    {"label":"50% Discount",  "value":1,  "question":"What CSS property is used for changing the size of text?"}
+        ];
+var svg = d3.select('#chart')
+            .append("svg")
+            .data([data])
+            .attr("width",  w + padding.left + padding.right)
+            .attr("height", h + padding.top + padding.bottom);
+        var container = svg.append("g")
+            .attr("class", "chartholder")
+            .attr("transform", "translate(" + (w/2 + padding.left) + "," + (h/2 + padding.top) + ")")
+            .attr("id","svgchart");
+        var vis = container
+            .append("g");
+           
+        var pie = d3.layout.pie().sort(null).value(function(d){return 1;});
+
+        // declare an arc generator function
+        var arc = d3.svg.arc().outerRadius(r);
+
+        // select paths, use arc generator to draw
+        var arcs = vis.selectAll("g.slice")
+            .data(pie)
+            .enter()
+            .append("g")
+            .attr("class", "slice");
+            
+
+        arcs.append("path")
+            .attr("fill", function(d, i){return "#2e485f";})
+            .attr("stroke",function(d,i){return "#01897b";})
+            .attr("stroke-width",function(d,i){return 3;})
+            .attr("d", function (d) {return arc(d); })
+            .style({"border":"1px solid black"});
+
+        // add the text
+        arcs.append("text").attr("transform", function(d){
+                d.innerRadius = 0;
+                d.outerRadius = r;
+                d.angle = (d.startAngle + d.endAngle)/2;
+                return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")translate(" + (d.outerRadius -10) +")";
+            })
+            .attr("text-anchor", "end")
+            .style({"font-weight":"bold", "font-size":"18px","fill":"white"})
+            .text( function(d, i) {
+                return data[i].label;
+            });
+
+        
 
 
+        function spin(d){
+            
+            container.on("click", null);
+
+            //all slices have been seen, all done
+            console.log("OldPick: " + oldpick.length, "Data length: " + data.length);
+            if(oldpick.length == data.length){
+                console.log("done");
+                container.on("click", null);
+                return;
+            }
+
+            var  ps       = 360/data.length,
+                 pieslice = Math.round(1440/data.length),
+                 rng      = Math.floor((Math.random() * 1440) + 360);
+                
+            rotation = (Math.round(rng / ps) * ps);
+            
+            picked = Math.round(data.length - (rotation % 360)/ps);
+            picked = picked >= data.length ? (picked % data.length) : picked;
 
 
+            if(oldpick.indexOf(picked) !== -1){
+                d3.select(this).call(spin);
+                return;
+            } else {
+                oldpick.push(picked);
+            }
+
+            rotation += 90 - Math.round(ps/2);
+
+            vis.transition()
+                .duration(3000)
+                .attrTween("transform", rotTween)
+                .each("end", function(){
+
+                    //mark question as seen
+                    d3.select(".slice:nth-child(" + (picked + 1) + ") path")
+                        .attr("fill", "#111");
+
+                    //populate question
+                    d3.select("#question h1")
+                        .text(data[picked].question);
+
+                    oldrotation = rotation;
+                
+                    //container.on("click", spin);
+                });
+        }
+
+        //make arrow
+        svg.append("g")
+            .attr("transform", "translate(" + (w + padding.left + padding.right) + "," + ((h/2)+padding.top) + ")")
+            .append("path")
+            .attr("d", "M-" + (r*.15) + ",0L0," + (r*.05) + "L0,-" + (r*.05) + "Z")
+            .style({"fill":"white"});
+
+        //draw spin circle
+        if(maxw == 500)
+        {
+            container.append("circle")
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", 60)
+            .style({"fill":"#01897b","cursor":"pointer","color":"white"});
+
+        //spin text
+        container.append("text")
+            .attr("x", 0)
+            .attr("y", 15)
+            .attr("text-anchor", "middle")
+            .text("Spin win")
+            .style({"font-weight":"bold", "font-size":"25px","fill":"white"});
+        }
+        else
+        {
+          container.append("circle")
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", 10)
+            .style({"fill":"#01897b","cursor":"pointer","color":"white"});
+        }
+        function rotTween(to) {
+          var i = d3.interpolate(oldrotation % 360, rotation);
+          return function(t) {
+            return "rotate(" + i(t) + ")";
+          };
+        }
+        
+        
+        function getRandomNumbers(){
+            var array = new Uint16Array(1000);
+            var scale = d3.scale.linear().range([360, 1440]).domain([0, 100000]);
+
+            if(window.hasOwnProperty("crypto") && typeof window.crypto.getRandomValues === "function"){
+                window.crypto.getRandomValues(array);
+                console.log("works");
+            } else {
+                //no support for crypto, get crappy random numbers
+                for(var i=0; i < 1000; i++){
+                    array[i] = Math.floor(Math.random() * 100000) + 1;
+                }
+            }
+
+            return array;
+        }
+        
+        function clickspin()
+        {
+          container.on("click", spin);
+          document.getElementById("svgchart").dispatchEvent(new Event('click'));
+          document.getElementById("spinwheel").onclick = null;
+        }
+</script>
 <header>
 
     <style>
@@ -169,7 +357,112 @@ gtag('config', 'UA-109296886-1');
 
 }
 
- 
+#infoi {
+  z-index: 2000;
+    background-color:rgba(12,12,12,0.5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+#infoi input
+{
+    position: absolute;
+    top: 80%;
+    left: 30%;
+    transform: translate(-30%, -80%);
+    border-radius: 10px;
+    border: none;
+    width: 50%;
+    height: 50px;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+}
+#infoi button
+{
+    position: absolute;
+    right: 20%;
+    top: 80%;
+    transform: translate(10%, -80%);
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 6px;
+    border: none;
+    background-color: #06c5b2;
+}
+#infoi .closepng
+{
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  width: 50px;
+  cursor: pointer;
+}
+#chart
+{
+  position:absolute;
+  width:500px;
+  height:500px;
+  top:20%;
+  left:50%;
+  transform: translate(-50%, -30%);
+}
+ @media(max-width: 720px){
+  #chart
+  {
+    position: absolute;
+    top: 40%;
+    left: 47%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    height: auto;
+  }
+  #infoi input
+{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    border-radius: 10px;
+    border: none;
+    width: 80%;
+    height: 30px;
+    text-align: center;
+    color: black;
+    font-size: 15px;
+}
+#infoi button
+{
+    position: absolute;
+    right: 50%;
+    top: 80%;
+    transform: translate(50%, -80%);
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 6px;
+    border: none;
+    background-color: #06c5b2;
+}
+#infoi .closepng
+{
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  width: 50px;
+  cursor: pointer;
+}
+ }
 </style>
 
 
