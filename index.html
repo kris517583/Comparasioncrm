@@ -64,18 +64,23 @@ gtag('config', 'UA-109296886-1');
 <div id="mySidenav" class="sidenav">
   <h3>Spin to Win</h3>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  
   <div id="chart"></div>
-  <input type="email" placeholder="Enter your Email address"/>
+  <div class="spininput" >
+  <img src="./HL_files/HLS_Logo.png"/><br>
+  <h4>Spin the wheel & get your prize</h4>
+  <input type="email" placeholder="Enter your Email address"/><br><br>
 
   <button id="spinwheel" onclick="clickspin()">Spin now</button>
+  </div>
 </div>
 <script type="text/javascript">
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-    }
-
     function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
+      //document.getElementById("mySidenav").style.width = "0px!important";
+      //document.getElementsByClassName("sidenav")[0].style.width = "0px";
+      var x = document.querySelectorAll("#mySidenav");
+      x[0].style.setProperty("width", "0", "important");
+      document.getElementById("mySidenav").style.minWidth = "0px";
     }
   function closediv()
   {
@@ -203,31 +208,12 @@ var svg = d3.select('#chart')
             .attr("d", "M-" + (r*.15) + ",0L0," + (r*.05) + "L0,-" + (r*.05) + "Z")
             .style({"fill":"#00887a"});
 
-        //draw spin circle
-        if(maxw == 400)
-        {
-            container.append("circle")
-            .attr("cx", 0)
-            .attr("cy", 0)
-            .attr("r", 60)
-            .style({"fill":"#01897b","cursor":"pointer","color":"white"});
-
-        //spin text
-        container.append("text")
-            .attr("x", 0)
-            .attr("y", 10)
-            .attr("text-anchor", "middle")
-            .text("Spin win")
-            .style({"font-weight":"bold", "font-size":"20px","fill":"white"});
-        }
-        else
-        {
           container.append("circle")
             .attr("cx", 0)
             .attr("cy", 0)
             .attr("r", 10)
             .style({"fill":"#01897b","cursor":"pointer","color":"white"});
-        }
+        
         function rotTween(to) {
           var i = d3.interpolate(oldrotation % 360, rotation);
           return function(t) {
@@ -423,52 +409,30 @@ var svg = d3.select('#chart')
 {
   width:500px;
   height:400px;
-  margin-left : -30%;
-}
- @media(max-width: 720px){
-  #infoi input
-{
-    position: absolute;
-    top: 80%;
-    left: 30%;
-    transform: translate(-30%, -80%);
-    border-radius: 10px;
-    border: none;
-    width: 80%;
-    height: 40px;
-    text-align: center;
-    color: black;
-    font-size: 15px;
-}
-#infoi button
-{
-    position: absolute;
-    right: 50%;
-    top: 90%;
-    transform: translate(50%, -80%);
-    height: 40px;
-    padding-left: 10px;
-    padding-right: 10px;
-    color: white;
-    font-weight: bold;
-    font-size: 12px;
-    border-radius: 6px;
-    border: none;
-    background-color: #06c5b2;
-}
-#infoi .closepng
-{
   position: absolute;
-  right: 5%;
-  top: 5%;
-  width: 30px;
-  cursor: pointer;
+  left : -227px;
 }
+ @media(max-width: 740px)
+ {
+    .spininput
+    {
+        position: absolute;
+        left: 25%!important;
+        top : 60%!important;
+    }
+    .spininput h4
+    {
+        font-size: 15px !important;
+    }
+    .sidenav {
+        width: 100% !important;
+        padding: 0 !important;
+    }
  }
 
 .sidenav {
   height: 100%;
-  width: 400px;
+  width: 60%;
   position: fixed;
   z-index: 3000;
   top: 0;
@@ -504,15 +468,20 @@ var svg = d3.select('#chart')
   padding: 5px;
   color:white;
 }
-.sidenav input
+.spininput
 {
     position: absolute;
-    top: 80%;
-    left: 30%;
-    transform: translate(-30%, -80%);
+    left: 45%;
+    top: 30%;
+
+
+}
+.sidenav input
+{
+    
     border-radius: 10px;
     border: none;
-    width: 80%;
+    width: 250px;
     height: 40px;
     text-align: center;
     color: black;
@@ -520,10 +489,7 @@ var svg = d3.select('#chart')
 }
 .sidenav button
 {
-    position: absolute;
-    right: 50%;
-    top: 90%;
-    transform: translate(50%, -80%);
+    
     height: 40px;
     padding-left: 10px;
     padding-right: 10px;
