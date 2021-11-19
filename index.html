@@ -86,7 +86,7 @@ gtag('config', 'UA-109296886-1');
   {
     document.getElementById("infoi").style.display="none";
   }
-  var maxw = 400 > document.getElementsByTagName("html")[0].offsetWidth ? document.getElementsByTagName("html")[0].offsetWidth : 400;
+  var maxw = 600 > document.getElementsByTagName("html")[0].offsetWidth ? document.getElementsByTagName("html")[0].offsetWidth : 500;
   var padding = {top:20, right:40, bottom:0, left:0},
             w = maxw - padding.left - padding.right,
             h = maxw - padding.top  - padding.bottom,
@@ -414,20 +414,35 @@ var svg = d3.select('#chart')
 }
  @media(max-width: 740px)
  {
+    .sidenav {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    .spininput h4
+    {
+        font-size: 15px !important;
+    }
     .spininput
     {
         position: absolute;
         left: 25%!important;
         top : 60%!important;
     }
+}
+@media(max-width: 940px) and (min-width: 740px)
+ {
+
+    .spininput
+    {
+        position: absolute;
+        left: 25%!important;
+        top : 80%!important;
+    }
     .spininput h4
     {
         font-size: 15px !important;
     }
-    .sidenav {
-        width: 100% !important;
-        padding: 0 !important;
-    }
+    
  }
 
 .sidenav {
