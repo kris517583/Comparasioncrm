@@ -62,13 +62,13 @@ gtag('config', 'UA-109296886-1');
     <button id="spinwheel" onclick="clickspin()">Spin now</button>
 </div>-->
 <div id="mySidenav" class="sidenav">
-  <h3>Spin to Win</h3>
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   
   <div id="chart"></div>
   <div class="spininput" >
   <img src="./HL_files/HLS_Logo.png"/><br>
-  <h4>Spin the wheel & get your prize</h4>
+  <h2 style="font-weight: 700;font-size: 40px;">SPIN TO WIN</h2>
+  <h4  style="font-size: 18px; margin-top:25px;margin-bottom: 23px">Spin the wheel & get your prize</h4>
   <input type="email" placeholder="Enter your Email address"/><br><br>
 
   <button id="spinwheel" onclick="clickspin()">Spin now</button>
@@ -96,7 +96,13 @@ gtag('config', 'UA-109296886-1');
             picked = 100000,
             oldpick = [],
             color = d3.scale.category20();
+    var colorssector = ["#01897b","#01997b","#01a97b","#01b97b","#01c97b"]
 var data = [
+                    {"label":"10% Discount",  "value":1,  "question":"What CSS property is used for specifying the area between the content and its border?"},
+                    {"label":"15% Discount",  "value":1,  "question":"What CSS property is used for changing the font?"},
+                    {"label":"5% Discount",  "value":1,  "question":"What CSS property is used for changing the color of text?"},
+                    {"label":"20% Discount",  "value":1,  "question":"What CSS property is used for changing the boldness of text?"},
+                    {"label":"50% Discount",  "value":1,  "question":"What CSS property is used for changing the size of text?"},
                     {"label":"10% Discount",  "value":1,  "question":"What CSS property is used for specifying the area between the content and its border?"},
                     {"label":"15% Discount",  "value":1,  "question":"What CSS property is used for changing the font?"},
                     {"label":"5% Discount",  "value":1,  "question":"What CSS property is used for changing the color of text?"},
@@ -129,9 +135,7 @@ var svg = d3.select('#chart')
             
 
         arcs.append("path")
-            .attr("fill", function(d, i){return "#2e485f";})
-            .attr("stroke",function(d,i){return "#01897b";})
-            .attr("stroke-width",function(d,i){return 3;})
+            .attr("fill", function(d, i){return colorssector[i%5];})
             .attr("d", function (d) {return arc(d); })
             .style({"border":"1px solid black"});
 
@@ -214,6 +218,13 @@ var svg = d3.select('#chart')
             .attr("r", 10)
             .style({"fill":"#01897b","cursor":"pointer","color":"white"});
         
+        container.append("circle")
+            .attr("cx", 0)
+            .attr("cy", 0)
+            .attr("r", r)
+            .attr("stroke",function(d,i){return "#535254";})
+            .attr("stroke-width",function(d,i){return 6;})
+            .style({"fill":"none"})
         function rotTween(to) {
           var i = d3.interpolate(oldrotation % 360, rotation);
           return function(t) {
@@ -425,8 +436,8 @@ var svg = d3.select('#chart')
     .spininput
     {
         position: absolute;
-        left: 25%!important;
-        top : 60%!important;
+        left: 23%!important;
+        top : 50%!important;
     }
 }
 @media(max-width: 940px) and (min-width: 740px)
@@ -435,8 +446,8 @@ var svg = d3.select('#chart')
     .spininput
     {
         position: absolute;
-        left: 25%!important;
-        top : 80%!important;
+        left: 45%!important;
+        top : 50%!important;
     }
     .spininput h4
     {
@@ -447,7 +458,8 @@ var svg = d3.select('#chart')
 
 .sidenav {
   height: 100%;
-  width: 60%;
+  width: 650px;
+
   position: fixed;
   z-index: 3000;
   top: 0;
@@ -479,15 +491,14 @@ var svg = d3.select('#chart')
   font-size: 36px;
   margin-top: 20px;
   margin-left: 50px;
-  background-color: #01897b;
+  color: #01897b;
   padding: 5px;
-  color:white;
 }
 .spininput
 {
     position: absolute;
     left: 45%;
-    top: 30%;
+    top: 10%;
 
 
 }
