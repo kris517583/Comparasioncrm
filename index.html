@@ -65,11 +65,12 @@ gtag('config', 'UA-109296886-1');
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   
   <div id="chart"></div>
+  <div><img src="./HL_files/HLS_Logo.png"/></div>
+  <div class="spinimg"><img src="./HL_files/spinimg.png"/></div>
   <div class="spininput" >
-  <img src="./HL_files/HLS_Logo.png"/><br>
   <h2 style="font-weight: 700;font-size: 40px;">SPIN TO WIN</h2>
   <h4  style="font-size: 18px; margin-top:25px;margin-bottom: 23px">Spin the wheel & get your prize</h4>
-  <input type="email" placeholder="Enter your Email address"/><br><br>
+  <input type="email" placeholder="Enter your Email address"/>
 
   <button id="spinwheel" onclick="clickspin()">Spin now</button>
   </div>
@@ -422,6 +423,8 @@ var svg = d3.select('#chart')
   height:400px;
   position: absolute;
   left : -227px;
+  top: 50%;
+  transform: translate(0,-50%);
 }
  @media(max-width: 740px)
  {
@@ -436,8 +439,20 @@ var svg = d3.select('#chart')
     .spininput
     {
         position: absolute;
-        left: 23%!important;
-        top : 50%!important;
+        left: 5%!important;
+        top : 60%!important;
+    }
+    .spininput button,.spininput input
+    {
+        width: 100% !important;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    #chart
+    {
+        top:2%!important;
+        transform: translate(0px,2%);
     }
 }
 @media(max-width: 940px) and (min-width: 740px)
@@ -447,7 +462,7 @@ var svg = d3.select('#chart')
     {
         position: absolute;
         left: 45%!important;
-        top : 50%!important;
+        top : 60%!important;
     }
     .spininput h4
     {
@@ -498,7 +513,7 @@ var svg = d3.select('#chart')
 {
     position: absolute;
     left: 45%;
-    top: 10%;
+    top: 60%;
 
 
 }
@@ -525,6 +540,14 @@ var svg = d3.select('#chart')
     border-radius: 6px;
     border: none;
     background-color: #06c5b2;
+}
+.spinimg img
+{
+    width: 400px;
+    position: absolute;
+    left :38%;
+    z-index: -1;
+    top:20%;
 }
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
