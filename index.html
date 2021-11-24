@@ -70,7 +70,7 @@ gtag('config', 'UA-109296886-1');
   <div class="spininput" >
   <h2 style="font-weight: 700;font-size: 40px;">SPIN TO WIN</h2>
   <h4  style="font-size: 18px; margin-top:25px;margin-bottom: 23px">Spin the wheel & get your prize</h4>
-  <input type="email" placeholder="Enter your Email address"/>
+  <input id="spinemail" type="email" placeholder="Enter your Email address"/>
 
   <button id="spinwheel" onclick="clickspin()">Spin now</button>
   </div>
@@ -99,16 +99,16 @@ gtag('config', 'UA-109296886-1');
             color = d3.scale.category20();
     var colorssector = ["#01897b","#01997b","#01a97b","#01b97b","#01c97b"]
 var data = [
-                    {"label":"10% Discount",  "value":1,  "question":"What CSS property is used for specifying the area between the content and its border?"},
-                    {"label":"15% Discount",  "value":1,  "question":"What CSS property is used for changing the font?"},
-                    {"label":"5% Discount",  "value":1,  "question":"What CSS property is used for changing the color of text?"},
-                    {"label":"20% Discount",  "value":1,  "question":"What CSS property is used for changing the boldness of text?"},
-                    {"label":"50% Discount",  "value":1,  "question":"What CSS property is used for changing the size of text?"},
-                    {"label":"10% Discount",  "value":1,  "question":"What CSS property is used for specifying the area between the content and its border?"},
-                    {"label":"15% Discount",  "value":1,  "question":"What CSS property is used for changing the font?"},
-                    {"label":"5% Discount",  "value":1,  "question":"What CSS property is used for changing the color of text?"},
-                    {"label":"20% Discount",  "value":1,  "question":"What CSS property is used for changing the boldness of text?"},
-                    {"label":"50% Discount",  "value":1,  "question":"What CSS property is used for changing the size of text?"}
+                    {"label":"10% Discount",  "value":1},
+                    {"label":"15% Discount",  "value":1},
+                    {"label":"5% Discount",  "value":1},
+                    {"label":"20% Discount",  "value":1},
+                    {"label":"50% Discount",  "value":1},
+                    {"label":"10% Discount",  "value":1},
+                    {"label":"15% Discount",  "value":1},
+                    {"label":"5% Discount",  "value":1},
+                    {"label":"20% Discount",  "value":1},
+                    {"label":"50% Discount",  "value":1}
         ];
 var svg = d3.select('#chart')
             .append("svg")
@@ -197,9 +197,8 @@ var svg = d3.select('#chart')
                         .attr("fill", "#111");
 
                     //populate question
-                    d3.select("#question h1")
-                        .text(data[picked].question);
-
+                    console.log(data[picked].label)
+                    alert("Congratulations "+document.getElementById("spinemail").value+"! You won "+data[picked].label)
                     oldrotation = rotation;
                 
                     //container.on("click", spin);
@@ -253,9 +252,20 @@ var svg = d3.select('#chart')
         
         function clickspin()
         {
-          container.on("click", spin);
-          document.getElementById("svgchart").dispatchEvent(new Event('click'));
-          document.getElementById("spinwheel").onclick = null;
+          if(document.getElementById("spinemail").value.trim()!="" && document.getElementById("spinemail").checkValidity())
+          {
+              container.on("click", spin);
+              document.getElementById("svgchart").dispatchEvent(new Event('click'));
+              document.getElementById("spinwheel").onclick = null;
+          }
+          else if(document.getElementById("spinemail").value.trim()=="")
+          {
+            alert("Enter Email address")
+          }
+          else
+          {
+            document.getElementById("spinemail").reportValidity()
+          }
         }
 </script>
 <header>
@@ -431,6 +441,7 @@ var svg = d3.select('#chart')
     .sidenav {
         width: 100% !important;
         padding: 0 !important;
+        overflow: hidden;
     }
     .spininput h4
     {
@@ -448,7 +459,19 @@ var svg = d3.select('#chart')
         margin-top: 10px;
         margin-bottom: 10px;
     }
-
+    .spininput h2
+    {
+        font-size: 28px !important;
+    }
+    .spininput h4
+    {
+        font-size: 15px !important;
+    }
+    .spininput h2,.spininput h4
+    {
+        margin-bottom: 2px!important;
+        margin-top:5px!important;
+    }
     #chart
     {
         top:2%!important;
