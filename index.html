@@ -66,13 +66,13 @@ gtag('config', 'UA-109296886-1');
   
   <div id="chart"></div>
   <div><img src="./HL_files/HLS_Logo.png"/></div>
-  <div class="spinimg"><img src="./HL_files/spinimg.png"/></div>
+  <div class="spinimg"><img src="./HL_files/helloleads3.png"/></div>
   <div class="spininput" >
   <h2 style="font-weight: 700;font-size: 40px;">SPIN TO WIN</h2>
   <h4  style="font-size: 18px; margin-top:25px;margin-bottom: 23px">Spin the wheel & get your prize</h4>
-  <input id="spinemail" type="email" placeholder="Enter your Email address"/>
+  <input id="spinemail" type="email" placeholder="Enter your Email address"/><br>
 
-  <button id="spinwheel" onclick="clickspin()">Spin now</button>
+  <button id="spinwheel" onclick="clickspin()" style="margin-top:5px;">Spin now</button>
   </div>
 </div>
 <script type="text/javascript">
@@ -449,9 +449,11 @@ var svg = d3.select('#chart')
     }
     .spininput
     {
-        position: absolute;
-        left: 5%!important;
-        top : 65%!important;
+           position: absolute;
+            left: 50%!important;
+            top: 65%!important;
+            transform: translate(-50%,-10%);
+            width: 70%!important;
     }
     .spininput button,.spininput input
     {
@@ -476,6 +478,13 @@ var svg = d3.select('#chart')
     {
         top:2%!important;
         transform: translate(0px,2%);
+    }
+    .spinimg img
+    {
+        left : 50% !important;
+        width: 400px !important;
+        transform: translateX(-50%);
+        bottom:2% !important;
     }
 }
 @media(max-width: 940px) and (min-width: 740px)
@@ -566,11 +575,12 @@ var svg = d3.select('#chart')
 }
 .spinimg img
 {
-    width: 400px;
+    width: 300px;
     position: absolute;
-    left :38%;
+    left: 42%;
     z-index: -1;
-    top:20%;
+    bottom: 20%;
+    opacity: 0.4;
 }
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
